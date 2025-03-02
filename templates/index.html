@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Based Personal Finance Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>📊 AI-Based Personal Finance Tracker</h1>
+
+        <!-- Past Expenses Form -->
+        <div class="card">
+            <h2>Enter Your Past Expenses</h2>
+            <form action="/train" method="post">
+                <label>Enter past months (comma-separated):</label>
+                <input type="text" name="months" placeholder="e.g., 1,2,3,4,5" required>
+                <br>
+                <label>Enter corresponding expenses (comma-separated):</label>
+                <input type="text" name="expenses" placeholder="e.g., 5000,5500,6000,6500,7000" required>
+                <br>
+                <button type="submit">🚀 Train Model</button>
+            </form>
+        </div>
+
+        <!-- Prediction Form -->
+        <div class="card">
+            <h2>Predict Future Expenses</h2>
+            <form action="/predict" method="post">
+                <label>Enter a month number:</label>
+                <input type="number" name="month" placeholder="e.g., 6" required>
+                <br>
+                <button type="submit">🔮 Predict</button>
+            </form>
+        </div>
+
+        <!-- Prediction Result -->
+        {% if prediction %}
+            <div class="result">{{ prediction }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
