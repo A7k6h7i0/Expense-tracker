@@ -53,4 +53,4 @@ def predict():
         return render_template("index.html", prediction=f"❌ Error in prediction: {e}")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
